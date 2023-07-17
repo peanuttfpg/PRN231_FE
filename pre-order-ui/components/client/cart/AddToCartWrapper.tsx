@@ -1,9 +1,9 @@
 import { Box, useToast } from "@chakra-ui/react";
-import useAddCartItem from "../../hooks/cart/useAddCartItem";
-import useCartContext from "../../hooks/useCartContext";
+import useAddCartItem from "../../../hooks/cart/useAddCartItem";
+import useCartContext from "../../../hooks/useCartContext";
 import { useState } from "react";
-import { Cart, CartItem } from "../../types/cart";
-import {  Product } from "../../types/product";
+import { Cart, CartItem } from "../../../types/cart";
+import {  Product } from "../../../types/product";
 
 interface AddToCartWrapperProps {
   product: Product;

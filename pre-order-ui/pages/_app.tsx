@@ -1,4 +1,4 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
 import { AuthContextProvider } from "../contexts/AuthContext";
 import { UserContextProvider } from "../contexts/UserContext";
 import { Children, useEffect} from "react";
@@ -10,6 +10,7 @@ import { CartContextProvider } from "@/contexts/CartContext";
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Link from "next/link";
 import { Home } from "./admin/home/Home";
 import { Login } from "./admin/login/Login";
 import { Single } from "./admin/single/Single";
@@ -23,26 +24,23 @@ function MyApp({ Component, pageProps }: any) {
   if (router.pathname === '/admin') {
     return(
     <React.StrictMode>
-        <div className="App">
-        <BrowserRouter>
-            <Routes>
-            <Route path="/">
-                <Route index element={<Home />}></Route>
-                <Route path="login" element={<Login />} />
-                <Route path="users">
-                <Route index element={<List />} />
-                <Route path=":userId" element={<Single />} />
-                <Route path="new" element={<New />} />
-                </Route>
-                <Route path="products">
-                <Route index element={<List />} />
-                <Route path=":productId" element={<Single />} />
-                <Route path="new" element={<New />} />
-                </Route>
-            </Route>
-            </Routes>
-        </BrowserRouter>
-        </div>
+      <Box className="App">
+        <Link href="/admin">
+            Home
+        </Link>
+        <Link href="/admin/login">
+            Login
+        </Link>
+        <Link href="/admin/users">
+            Users
+        </Link>
+        <Link href="/admin/products">
+            Products
+        </Link>
+      </Box>
+      <Box>
+        <Component {...pageProps} />
+      </Box>
     </React.StrictMode>
     );
   }
