@@ -1,5 +1,5 @@
 import { ReactNode, createContext, useState, useEffect } from "react";
-import { TUser } from "../types/User";
+import { TUser } from "../types/user";
 
 export type initialStateProps = {
   user: TUser | null;
