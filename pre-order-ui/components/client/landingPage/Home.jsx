@@ -15,7 +15,7 @@ import 'firebase/compat/auth';
 
 import Action from "../nav";
 import { MdTrendingFlat } from "react-icons/md";
-// import background from "../../../public/assets/images/PreOrder-Banner.png"
+import background from "../../../public/assets/images/PreOrder-Banner.png"
 
 
   
@@ -34,7 +34,7 @@ export default function SplitWithImage() {
             <Box >
               <Image 
                   alt="doggo"
-                  // src={background.src} 
+                  src={background.src} 
                   boxSize="450px"
                   mx="-5rem"
                   my="-0.5rem"

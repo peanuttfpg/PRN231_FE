@@ -4,7 +4,7 @@ import { request } from "./util";
 
 const prepareOrder = (cartPrepare: OrderRequest,accessToken: string) => {
   return request.post<PostResponse<OrderResponse>>(
-    `/order/createOrder`,
+    `/order/create`,
     cartPrepare,
     {
     headers: {

@@ -5,15 +5,15 @@ import { request } from "./util";
 
 const authorize = (accessToken: string) => {
   const auth = {
-    token: accessToken,
+    idToken: accessToken,
   };
-  return request.post(`/auth/FirebaseAuth`, auth);
+  return request.post(`/account/GoogleLogin`, auth);
 };
 const refresh = (refreshToken: string) => {
   const auth = {
-    token: refreshToken,
+    idToken: refreshToken,
   };
-  return request.post<PostResponse<string>>(`/auth/FirebaseAuth`, auth);
+  return request.post<PostResponse<string>>(`/account/GoogleLogi`, auth);
 };
 
 const getUserInfo = (accessToken: string) => {

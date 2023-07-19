@@ -13,18 +13,26 @@ export type CartItem = {
 };
 
 export interface ProductItem {
-    id: number;
-    quantity: number;
-    description: string;
+  productCode: string;
+  productName: string;
+  unitPrice: number;
+  quantity: number;
+  totalAmount: number;
+  discountRate: number;
+  finalAmount: number;
+  note: string
   }
 
 export interface OrderRequest {
-    address: string;
-    paymentMethod: number;
-    cartRequests: {
-      productId: number;
-      quantity: number;
-    }[];
+  paymentType: number;
+  deliveryPhone: string;
+  totalAmount: string;
+  discountRate: number;
+  finalAmount: number;
+  shippingFee: number;
+  quantity: number;
+  note: string;
+  orderDetails: ProductItem[];
 }
 
 export interface OrderResponse {

@@ -63,17 +63,15 @@ export default function CartDrawer({
   const { user: FbUser, loading} = useAuthContext();
   const { accessToken, user: currentUser } = useUserContext();
   const [ bearerToken, setBearerToken] = useState("");
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await authorize(await FbUser.getIdToken()!);
-      if(res.status === 200){
-        console.log("Authorized TOKEN :",res.data?.accessToken);
-        setBearerToken(res.data?.accessToken);
-      }
-    };
-    fetchData();
-    return () => {};
-  }, [accessToken]);
+  
+  const fetchData = async () => {
+    const res = await authorize(await FbUser.getIdToken()!);
+    if(res.status === 200){
+      console.log("Authorized TOKEN :",res.data);
+      setBearerToken(res.data?.accessToken);
+    }
+  };
+  fetchData();
 
   useEffect(() => {
     const FetchData = async () => {
