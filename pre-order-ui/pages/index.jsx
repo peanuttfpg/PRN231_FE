@@ -10,11 +10,13 @@ import Action from "../components/client/nav";
 function Home(){
     return(
         <ChakraProvider theme={theme}>
-            <Box>
-                    <Action/>
-                    <SplitWithImage />
-                    <MainFooter/>
-            </Box>
+            <AuthCheck>
+                <Box>
+                        <Action/>
+                        <SplitWithImage />
+                        <MainFooter/>
+                </Box>
+            </AuthCheck>
         </ChakraProvider>
     )
 }
