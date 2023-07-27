@@ -23,14 +23,15 @@ interface ProductDetailViewProps {
 }
 
 export default function ProductDetailView({ product }: ProductDetailViewProps) {
-
   return (
     <SimpleGrid columns={2} spacing={10} py={10}>
       <Flex>
         <Image
           rounded={"md"}
-          alt={product.name}
-          src={product?.imageUrl}
+          alt={product?.name}
+          src={
+            "https://flyworld.vn/wp-content/uploads/2021/07/Agras-may-bay-nong-nghiep-t30-Flyword-7.jpg"
+          }
           objectFit={"cover"}
           align={"center"}
           w={"100%"}
@@ -49,17 +50,17 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
 
           <Stack spacing={{ base: 4, sm: 6 }} direction={"column"}>
             <VStack spacing={{ base: 4, sm: 6 }}></VStack>
-            {/* {product.productDetail.description && (
+            {product?.description && (
               <Box>
                 <Text fontSize={"xl"} fontWeight={"semibold"} mb={"4"}>
                   Mô tả:
                 </Text>
                 <Text fontSize={"xl"} mb={"4"}>
-                  {product.productDetail.description}
+                  {product?.description}
                 </Text>
               </Box>
-            )} */}
-            </Stack>
+            )}
+          </Stack>
 
           {/* {product.price == 6 && (
             <Flex direction={"column"} gap={3}>

@@ -33,7 +33,7 @@ import ProductInCart from "../sections/ProductInCart";
 import CartModal from "./CartModal";
 import { CustomerInfo } from "../../../types/cart";
 import Link from "next/link";
-
+import cartApi from "../../../api/cart";
 interface CartDrawerProps {
   arrivedTimeRange: string;
   isCartDisable: boolean;
@@ -46,6 +46,8 @@ export default function CartDrawer({
   const toast = useToast();
   const cartContext = useCartContext();
   const currentCart = cartContext.cart;
+  console.log("currentCart", currentCart);
+
   const [totalCartItems, setTotalCartItems] = useState<number>(0);
   const totalCurrentCart = currentCart?.items.length;
   const [totalAmount, setTotalAmount] = useState(0);
@@ -55,37 +57,38 @@ export default function CartDrawer({
     setTotalAmount(0);
     currentCart?.items?.forEach((item) => {
       setTotalAmount(totalAmount + item.product.price);
-    }
-    )
+    });
   }, [currentCart]);
 
-  const {authorize} = useAuthorize();
-  const { user: FbUser, loading} = useAuthContext();
+  const { authorize } = useAuthorize();
+  const { user: FbUser, loading } = useAuthContext();
   const { accessToken, user: currentUser } = useUserContext();
-  const [ bearerToken, setBearerToken] = useState("");
-  
+  const [bearerToken, setBearerToken] = useState("");
+
   const fetchData = async () => {
     const res = await authorize(await FbUser.getIdToken()!);
-    if(res.status === 200){
-      console.log("Authorized TOKEN :",res.data);
+    if (res.status === 200) {
+      console.log("Authorized TOKEN :", res.data);
       setBearerToken(res.data?.accessToken);
     }
   };
   fetchData();
-
+  const check = (currentCart) => {
+    const res = cartApi.checkout(currentCart);
+  };
   useEffect(() => {
     const FetchData = async () => {
       const res = await useCartPrice(
-        mapCartModelToOrderRequest(currentCart),bearerToken
+        mapCartModelToOrderRequest(currentCart),
+        bearerToken
       );
-      console.log("Prepared Card :",res);
+      console.log("Prepared Card :", res);
       setCartPrepareUrl(res?.url);
       console.log(cartPrepareUrl);
     };
     FetchData();
-  return () => {};
-}, [currentCart,bearerToken]);
-
+    return () => {};
+  }, [currentCart, bearerToken]);
 
   useEffect(() => {
     setTotalCartItems(totalCurrentCart);
@@ -115,21 +118,21 @@ export default function CartDrawer({
     }
   };
 
-  const handleClick = ()  => {
+  const handleClick = () => {
     cartContext.onOpen();
     isCartDisable = !isCartDisable;
   };
 
   return (
     <Box>
-      <Box 
-        height={"3rem"} 
-        onClick={ handleClick }
+      <Box
+        height={"3rem"}
+        onClick={handleClick}
         position={"absolute"}
-        right={"18rem"}>
+        right={"18rem"}
+      >
         <IconButton
           disabled={isCartDisable}
-          
           variant="outline"
           colorScheme="dark"
           aria-label="Giỏ hàng"
@@ -209,7 +212,7 @@ export default function CartDrawer({
               justifyContent={"space-between"}
               padding="1rem"
             >
-              {totalAmount>0 ? ( 
+              {totalAmount > 0 ? (
                 <>
                   <Flex
                     height={"auto"}
@@ -223,9 +226,7 @@ export default function CartDrawer({
                     <Box>
                       <Flex justifyContent="space-between" fontSize={"xl"}>
                         <Text>{"Tạm tính:"}</Text>
-                        <Text>
-                          {totalAmount} VND
-                        </Text>
+                        <Text>{totalAmount} VND</Text>
                       </Flex>
                     </Box>
                     <Divider />
@@ -235,24 +236,23 @@ export default function CartDrawer({
                       fontWeight="bold"
                     >
                       <Text>{"Tổng cộng:"}</Text>
-                      <Text>
-                        {totalAmount} VND
-                      </Text>
+                      <Text>{totalAmount} VND</Text>
                     </Flex>
                   </Flex>
                   {/*  Check out */}
                   <Flex paddingTop="1rem">
                     <CartModal arrivedTimeRange={arrivedTimeRange}>
                       <Button
-                        as={Link}
-                        href={cartPrepareUrl}
+                        // as={Link}
+                        // href={cartApi.checkout(data)}
                         height={"3rem"}
                         variant="outline"
                         color={"light"}
                         backgroundColor="primary.main"
                         colorScheme={"primary.main"}
-                        // onClick={cartContext.onOpen}
+                        // onClick={check}
                         fontSize="2xl"
+                        onClick={check}
                         w="100%"
                       >
                         Đặt ngay!
