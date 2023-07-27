@@ -16,6 +16,7 @@ import 'firebase/compat/auth';
 import Action from "../nav";
 import { MdTrendingFlat } from "react-icons/md";
 import background from "../../../public/assets/images/PreOrder-Banner.png"
+import ProductListView from "../productList/productListView";
 
 
   
@@ -56,10 +57,8 @@ export default function SplitWithImage() {
                     PRE ORDER SHOP
                 </Text>
               </Heading>
-              <Text align="center">
-              
-              </Text>
             </Box>
+            <ProductListView />
             {/* banner background */}
             <Box>
               
@@ -67,7 +66,6 @@ export default function SplitWithImage() {
           </Box>
           <Spacer pt={"2rem"} />
           <Spacer display={{ md: "none" }} pt={"7rem"} />
-        
           </Flex>
         {/* <Button
                 rightIcon={<MdTrendingFlat />}

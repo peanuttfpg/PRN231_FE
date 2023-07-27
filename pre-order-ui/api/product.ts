@@ -2,12 +2,17 @@ import { request } from "./util";
 import { Product } from "@/types/product";
        
 
-export const getAllProducts = ( accessToken: string,) : Promise<Product[]> =>
-    request.get('/product/getAll', {
-      headers: {
-        authorization: "Bearer " + accessToken,
-      }
-    }).then((res) => res.data);
+// type Props = {
+//   params?: any;
+// };
+
+
+// export const getProdById = () :  Promise<Product[]> =>
+// request.get('product/getById').then((res) => res.data);
+
+export const getAllProducts = ( ) : Promise<Product[]> =>
+    request.get('product/getAll').then((res) => res.data);
+
 
 const productApi ={
   getAllProducts

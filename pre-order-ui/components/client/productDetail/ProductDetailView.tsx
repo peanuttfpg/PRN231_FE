@@ -14,8 +14,9 @@ import {
   Checkbox,
   CheckboxGroup,
 } from "@chakra-ui/react";
-import { Product } from "../../types/product";
+import { Product } from "../../../types/product";
 import AddToCartWrapper from "../cart/AddToCartWrapper";
+import { log } from "console";
 
 interface ProductDetailViewProps {
   product: Product;
@@ -48,7 +49,7 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
 
           <Stack spacing={{ base: 4, sm: 6 }} direction={"column"}>
             <VStack spacing={{ base: 4, sm: 6 }}></VStack>
-            {product.productDetail.description && (
+            {/* {product.productDetail.description && (
               <Box>
                 <Text fontSize={"xl"} fontWeight={"semibold"} mb={"4"}>
                   Mô tả:
@@ -57,10 +58,10 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
                   {product.productDetail.description}
                 </Text>
               </Box>
-            )}
+            )} */}
             </Stack>
 
-          {product.price == 6 && (
+          {/* {product.price == 6 && (
             <Flex direction={"column"} gap={3}>
               <Text fontSize={"xl"} fontWeight="semibold">
                 Chọn size:
@@ -82,10 +83,10 @@ export default function ProductDetailView({ product }: ProductDetailViewProps) {
                 </Stack>
               </RadioGroup>
             </Flex>
-          )}
+          )} */}
         </Flex>
         <AddToCartWrapper
-          size={product.productDetail.size!}
+          // size={product.productDetail.size!}
           product={product}
         >
           <Button

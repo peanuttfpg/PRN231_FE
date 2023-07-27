@@ -7,13 +7,13 @@ const authorize = (accessToken: string) => {
   const auth = {
     idToken: accessToken,
   };
-  return request.post(`/account/GoogleLogin`, auth);
+  return request.post(`/account/googleLogin`, auth);
 };
 const refresh = (refreshToken: string) => {
   const auth = {
     idToken: refreshToken,
   };
-  return request.post<PostResponse<string>>(`/account/GoogleLogi`, auth);
+  return request.post<PostResponse<string>>(`/account/googleLogin`, auth);
 };
 
 const getUserInfo = (accessToken: string) => {
