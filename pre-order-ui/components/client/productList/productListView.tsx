@@ -78,10 +78,10 @@ export default function ProductListView() {
               <React.Fragment key={value?.id}>
                 {/*Lastest blog */}
                 <Flex
+              
                   flexDirection={"row"}
                   alignItems={"flex-start"}
                   mb={4}
-                  p={4}
                   gap={"100px"}
                   width={"360px"}
                   height={"640.36px"}
@@ -126,7 +126,7 @@ export default function ProductListView() {
                               {value?.name}
                             </Link>
                           </Heading>
-                          {/* <Image src={value.} height={"24rem"} width={"32rem"} /> */}
+                          <Image src={"https://flyworld.vn/wp-content/uploads/2021/07/Agras-may-bay-nong-nghiep-t30-Flyword-7.jpg"} height={"24rem"} width={"32rem"} />
                           <Text
                             fontFamily={"Lato"}
                             fontStyle={"normal"}
