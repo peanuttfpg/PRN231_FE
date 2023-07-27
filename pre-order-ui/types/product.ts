@@ -1,22 +1,20 @@
 export type Product = {
     id:number;
     name:string;
+    description:string;
     productDetail: ProductDetail;
-    quantity:number;
-    createDate:number;
-    updatedDate:number;
     price:number;
-    imageUrl:string;
     productStatus:string;
-    isDeleted:boolean;
-    imageList:string[];
+    isActive:boolean;
+    execptedReleaseDate:string;
 };
 
 export type ProductDetail = {
     id:number;
+    productId:number;
     description:string;
     quantity: number;
-    imageList: string[];
+    imgUrl: string;
     createdDate: Date,
     updatedDate: Date,
     color:string;

@@ -1,14 +1,29 @@
 import { useQuery } from "react-query";
 import productApi from "@/api/product";
 
+// const useProducts = () => {
+//   const getAllProducts = async () => {
+//     const res = await productApi.getAllProducts();
+//     return res;
+//   };
+//   return {
+//     getAllProducts
+//   };
+// };
+
+
 const useProducts = () => {
-  const getAllProducts = async (accessToken: string) => {
-    const res = await productApi.getAllProducts(accessToken);
-    return res;
-  };
+  const products = useQuery(["products"], () =>
+    productApi.getAllProducts()
+  );
+  console.log("products->>>", products);
   return {
-    getAllProducts
+    ...products,
+    data: products.data,
   };
+
+
+
 };
 
 export default useProducts;
